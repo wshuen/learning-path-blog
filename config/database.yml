@@ -29,4 +29,8 @@ test:
 # ensure the database is located in a persisted volume.
 production:
   <<: *default
+  adapter: sqlite3
+  database: db/production.sqlite3
+  pool: 5
+  timeout: 5000
   # database: path/to/persistent/storage/production.sqlite3
