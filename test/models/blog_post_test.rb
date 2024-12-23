@@ -12,7 +12,7 @@ class BlogPostTest < ActiveSupport::TestCase
   end
 
   test "draft? returns false for scheduled blog post" do
-    refute blog_posts(:scheduled).draft? #refute BlogPost.new(published_at: 1.year.from_now).draft?)
+    refute blog_posts(:scheduled).draft? # refute BlogPost.new(published_at: 1.year.from_now).draft?
   end
 
   test "published? returns true for published blog post" do
