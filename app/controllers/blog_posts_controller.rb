@@ -4,6 +4,9 @@ class BlogPostsController < ApplicationController
 
     def index
         @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
+        @pagy, @blog_posts = pagy(@blog_posts) 
+        # @pagy = pagination related details like total pages, current page, etc.
+        # @blog_posts = records for the current page like the blog posts and its information
     end
 
     def show
@@ -47,6 +50,6 @@ class BlogPostsController < ApplicationController
     def set_blog_post
         @blog_post = user_signed_in? ? BlogPost.find(params[:id]) : BlogPost.published.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-        redirect_to root_path #back to home page
+        redirect_to root_path # back to home page
     end
 end
