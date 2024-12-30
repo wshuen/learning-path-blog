@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-user = User.where(email: "wanshueny@gmail.com").first_or_initialize
+user = User.where(email: "wanshueny@gmail.com").first_or_initialize # see the email is exist or not, if not exist will create user
 user.update!(
     password: "password",
     password_confirmation: "password"

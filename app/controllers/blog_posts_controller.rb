@@ -7,6 +7,10 @@ class BlogPostsController < ApplicationController
         @pagy, @blog_posts = pagy(@blog_posts) 
         # @pagy = pagination related details like total pages, current page, etc.
         # @blog_posts = records for the current page like the blog posts and its information
+    rescue Pagy::OverflowError
+        redirect_to root_path(page: 1)
+        # params[:page] = 1
+        # retry
     end
 
     def show
